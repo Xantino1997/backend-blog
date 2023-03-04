@@ -5,6 +5,7 @@ export const createFile = async (file: Express.Multer.File) => {
     const parts = originalname.split(".");
     const ext = parts[parts.length - 1];
     const newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
-    return newPath;
+    const formattedPath = newPath.replace(/\\/g, "/");
+    fs.renameSync(path, formattedPath);
+    return formattedPath;
 }

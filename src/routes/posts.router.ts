@@ -18,7 +18,9 @@ router.post(
   uploadMiddleware.single("file"),
   async (req, res) => {
     try {
-      const cover = await createFile(req.file as Express.Multer.File);
+      const cover = req.file
+        ? await createFile(req.file as Express.Multer.File)
+        : "";
       const { title, summary, content } = req.body;
       const { _id } = (req as IGetUserAuthInfoRequest).user;
       const postDoc = await createPost({

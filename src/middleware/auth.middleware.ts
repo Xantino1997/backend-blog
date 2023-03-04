@@ -14,7 +14,7 @@ export const authenticatedRoute = async (
     }
     const user = await validateUser(token);
     (req as IGetUserAuthInfoRequest).user = user;
-    next();
+    return next();
   } catch (e) {
     return res.status(401).json({ message: "Token inválido" });
   }
