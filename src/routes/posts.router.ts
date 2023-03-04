@@ -13,7 +13,7 @@ import { IGetUserAuthInfoRequest } from "../types/common";
 const router = Router();
 
 router.post(
-  "/post",
+  "/",
   authenticatedRoute,
   uploadMiddleware.single("file"),
   async (req, res) => {
@@ -37,7 +37,7 @@ router.post(
 );
 
 router.put(
-  "/post",
+  "/",
   authenticatedRoute,
   uploadMiddleware.single("file"),
   async (req, res) => {
@@ -58,7 +58,7 @@ router.put(
   },
 );
 
-router.get("/post", async (req, res) => {
+router.get("/", async (req, res) => {
   const { page } = req.query;
   try {
     res.json(
@@ -70,7 +70,7 @@ router.get("/post", async (req, res) => {
   }
 });
 
-router.get("/post/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     res.json(await getPost(id));
