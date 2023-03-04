@@ -11,7 +11,7 @@ const app = express();
 
 config();
 
-const port = process.env.REACT_APP_PORT || 3001;
+const port = process.env.REACT_APP_PORT || process.env.PORT || 3001;
 const uri = process.env.REACT_APP_URI || "mongodb://localhost:27017/blog";
 const origin = process.env.REACT_APP_ORIGIN || "*";
 
